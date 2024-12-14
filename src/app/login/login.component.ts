@@ -1,26 +1,23 @@
 import { Component } from '@angular/core';
-import { LoginService } from '../services/login.service';
-import { HttpClient } from '@angular/common/http';
-
-import { Router} from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  
 })
 export class LoginComponent {
-  phoneNumber: string = '';
-  password: string = '';
-  message: string = '';
+  username = '';
+  password = '';
 
-  constructor(private http: HttpClient ,private router :Router, private loginService: LoginService) {}
-
-  login() {
-    this.loginService.login(this.phoneNumber, this.password).subscribe({
-      next: (response) => (this.message = response),
-      error: (error) => (this.message = 'Login failed.'),
-    });
+  onSubmit() {
+    if (this.username === 'user' && this.password === 'password') {
+      alert('Login successful');
+    } else {
+      alert('Invalid credentials');
+    }
   }
 }

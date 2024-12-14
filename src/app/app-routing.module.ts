@@ -1,14 +1,12 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
+import { provideRouter } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 
-const routes: Routes = [
+
+export const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+ 
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)], // Configuration correcte des routes
-  exports: [RouterModule], // Exporter le RouterModule
-})
-export class AppRoutingModule { }
+export const appRoutingProviders = [provideRouter(routes)];
