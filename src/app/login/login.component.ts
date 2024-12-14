@@ -10,14 +10,27 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  username = '';
-  password = '';
+  numero = ''; // Stores the entered phone number
 
+  // Function triggered on form submission
   onSubmit() {
-    if (this.username === 'user' && this.password === 'password') {
+    // Validate if the input matches specific credentials
+    if (this.numero.trim() === '') {
+      alert('Please enter your phone number');
+      return;
+    }
+
+    // Example logic for checking valid credentials
+    if (this.numero === 'user') {
       alert('Login successful');
     } else {
       alert('Invalid credentials');
     }
+  }
+
+  // Function triggered when the "Cancel" button is clicked
+  onCancel() {
+    this.numero = ''; // Clear the input field
+    alert('Operation canceled');
   }
 }
